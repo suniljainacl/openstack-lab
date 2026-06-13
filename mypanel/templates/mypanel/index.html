@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}My Lab Info{% endblock %}
+
+{% block main %}
+<div class="row">
+  <div class="col-sm-12">
+    <h2>OpenStack Lab Information</h2>
+    <hr>
+
+    <h4>Student Details</h4>
+    <table class="table table-bordered">
+      <tr><th>Student</th><td>{{ lab_info.student }}</td></tr>
+      <tr><th>VM Host</th><td>{{ lab_info.vm_host }}</td></tr>
+      <tr><th>Private IP</th><td>{{ lab_info.private_ip }}</td></tr>
+      <tr><th>OS</th><td>{{ lab_info.os }}</td></tr>
+      <tr><th>OpenStack Version</th><td>{{ lab_info.openstack_version }}</td></tr>
+    </table>
+
+    <h4>Installed Services</h4>
+    <table class="table table-bordered">
+      <thead><tr><th>Service</th></tr></thead>
+      <tbody>
+        {% for service in lab_info.services %}
+        <tr><td>{{ service }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+</div>
+{% endblock %}
